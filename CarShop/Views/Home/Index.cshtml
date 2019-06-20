@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CarShop.Models.Car>
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <td id="main_title" colspan="3"><h1>Главная</h1></td>
+    </tr>
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td class="small_card">
+                <img alt="@item.Title" src="@item.Preview"/>
+                <div class="content">
+                    <small>@item.Type</small>
+                    <h2>@item.Title</h2>
+                    <p>@item.Description</p>
+                    <a href="@Url.Action("CarPage", "Home", new {itemId = item.Id})" title="@item.Title">Перейти</a>
+                </div>
+            </td>
+        }
+        
+    </tr>
+    <tr>
+        <td class="big_card" colspan="3">
+            @Html.Action("Form", "Home")
+        </td>
+            @*<td class="big_card" colspan="3">
+                <img alt="Изображение" src="/Content/images/Form.png"/>
+                <form onsubmit="return false" action="Home/Lid" method="POST">
+                    <fieldset>
+                        <legend>Оформление заказа</legend>
+                        <input type="text" name="Name" placeholder="Введите ваше имя" required/><br/>
+                        <!--Тут ошибка-->
+                        <input type="tel" name="Tel" placeholder="Введите номер телефона в формате 8-ххх-ххх-хххх" required patern="8-[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br/>
+                        <!--Тут ошибка-->
+                        <select name="Car" required>
+                            <option value="Ghibili">Ghibili</option>
+                            <option value="Quattroporte">Quattroporte</option>
+                            <option value="GranTurismo">GranTurismo</option>
+                        </select><br/>
+                        <input type="submit"/>
+                    </fieldset>
+                </form>
+            </td>*@
+    </tr>
+</table>
+

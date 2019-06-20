@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Maserati</title>
+    <link href="/Content/CSS/styles.css" rel="stylesheet" type="text/css" />
+    <script src="/Content/JS/jquery-1.11.0.min.js"></script> 
+    <script src="/Content/JS/scrypts.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <img alt="Изображение" src="/Content/images/Header.png" />
+        </div>
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li>
+                        <a title="На главную" href="/Home/Index">
+                            <img alt="Логотип" src="/Content/images/Logo.jpg"/>
+                        </a>
+                    </li>
+                    @Html.Action("Nav", "Home")
+                </ul>
+                <div id="map"><img src="/Content/images/Map.jpg" alt="Map"></div>
+            </div>
+            <div id="main">
+                @RenderBody();
+            </div>
+            @if (IsSectionDefined("Form"))
+            {
+                @RenderSection("Form");
+            }
+        </div>
+        <div id="footer">Copyrite</div>
+    </div>
+</body>
+</html>

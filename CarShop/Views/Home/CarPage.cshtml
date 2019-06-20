@@ -1,0 +1,35 @@
+﻿@model CarShop.Models.Car
+@{
+
+    Layout = "../Shared/_Layout.cshtml";
+}
+@if (@Model == null)
+{
+    <h2>Car is not found</h2>
+    return;
+}
+
+<table>
+    <tr>
+        <td id="main_title" colspan="3">
+            <h1>@Model.Title</h1>
+        </td>
+    </tr>
+    <tr class="big_pic">
+        <td colspan="3">
+            <img id="Preview" src="@Model.SubPreview.Split(',')[0]" alt="Превью"/>
+        </td>
+    </tr>
+    <tr class="small_pic">
+        <td><img onclick="SetIMG(this.src)" src="@Model.SubPreview.Split(',')[0]" alt="Перед"/></td>
+        <td><img onclick="SetIMG(this.src)" src="@Model.SubPreview.Split(',')[1]" alt="Бок"/></td>
+        <td><img onclick="SetIMG(this.src)" src="@Model.SubPreview.Split(',')[2]" alt="Салон"/></td>
+    </tr>
+
+</table>
+
+@section Form{
+    <div class="form_block big_card">
+        @Html.Action("Form", "Home", new {itemId = Model.Id})
+    </div>
+}
